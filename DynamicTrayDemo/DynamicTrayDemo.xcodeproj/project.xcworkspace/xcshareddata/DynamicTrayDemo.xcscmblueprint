@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "01B0CB2611DE12F034F5878F5DFF3F116BDD9610",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "01B0CB2611DE12F034F5878F5DFF3F116BDD9610" : 9223372036854775807,
+    "9E65DC655C0CE3D1B4BA1D38FA3D0D39788D5DDC" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "113E7A75-3D16-4678-903C-EF6A84D5AB07",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "01B0CB2611DE12F034F5878F5DFF3F116BDD9610" : "SwipeOutTray\/",
+    "9E65DC655C0CE3D1B4BA1D38FA3D0D39788D5DDC" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DynamicTrayDemo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "DynamicTrayDemo\/DynamicTrayDemo.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/alemak1\/SwipeOutTray.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "01B0CB2611DE12F034F5878F5DFF3F116BDD9610"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/alemak1\/InteractiveStoryApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9E65DC655C0CE3D1B4BA1D38FA3D0D39788D5DDC"
+    }
+  ]
+}
