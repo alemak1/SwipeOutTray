@@ -13,6 +13,10 @@ class ViewController: UIViewController {
     var trayView: UIVisualEffectView = UIVisualEffectView()
     var trayLeftEdgeConstraint: NSLayoutConstraint = NSLayoutConstraint()
     var animator: UIDynamicAnimator = UIDynamicAnimator()
+    var gravityBehavior: UIGravityBehavior = UIGravityBehavior()
+    var gravityIsLeft: Bool = false
+    
+    let GUTTER_WIDTH: CGFloat = 100.00
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +43,18 @@ class ViewController: UIViewController {
     
     func setupBehaviors(){
         let edgeCollisionBehavior = UICollisionBehavior(items: [trayView])
+        edgeCollisionBehavior.setTranslatesReferenceBoundsIntoBoundary(with: UIEdgeInsetsMake(0, GUTTER_WIDTH, 0, -self.view.bounds.size.width))
+        animator.addBehavior(edgeCollisionBehavior)
+        
+        gravityBehavior = UIGravityBehavior(items: [trayView])
+        animator.addBehavior(gravityBehavior)
+        updateGravityIsLeft(isLeft: gravityIsLeft)
+        
+    }
+    
+    func updateGravityIsLeft(isLeft: Bool){
+        let angle = isLeft ? M_PI: 0.00
+        gravityBehavior.setAngle(CGFloat(angle), magnitude: 1.0)
         
         
     }
@@ -74,7 +90,7 @@ class ViewController: UIViewController {
         
         trayLeftEdgeConstraint = NSLayoutConstraint(item: trayView, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.left, multiplier: 1.0, constant: view.frame.size.width)
         
-        trayLeftEdgeConstraint?.isActive = true
+        trayLeftEdgeConstraint.isActive = true
         
         let trayLabel = UILabel()
         trayLabel.text = "Good morning, \n Sunshine \n, Maybel the Frenchie"
