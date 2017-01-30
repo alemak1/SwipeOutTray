@@ -11,7 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     var trayView: UIVisualEffectView = UIVisualEffectView()
-    var trayLeftEdgeConstraint: NSLayoutConstraint?
+    var trayLeftEdgeConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    var animator: UIDynamicAnimator = UIDynamicAnimator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +32,16 @@ class ViewController: UIViewController {
         
         setupTrayView()
         setupGestureRecognizers()
+        animator = UIDynamicAnimator(referenceView: self.view)
+        setupBehaviors()
     }
     
+    
+    func setupBehaviors(){
+        let edgeCollisionBehavior = UICollisionBehavior(items: [trayView])
+        
+        
+    }
     
     func setupGestureRecognizers(){
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(pan))
