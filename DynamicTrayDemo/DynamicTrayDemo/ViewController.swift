@@ -12,8 +12,11 @@ class ViewController: UIViewController {
 
     var trayView: UIVisualEffectView = UIVisualEffectView()
     var trayLeftEdgeConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    
     var animator: UIDynamicAnimator = UIDynamicAnimator()
     var gravityBehavior: UIGravityBehavior = UIGravityBehavior()
+    var attachmentBehavior: UIAttachmentBehavior?
+    
     var gravityIsLeft: Bool = false
     
     let GUTTER_WIDTH: CGFloat = 100.00
@@ -69,8 +72,29 @@ class ViewController: UIViewController {
         
     }
     
-    func pan(){
+    func pan(recognizer: UIPanGestureRecognizer){
+        let currentPoint: CGPoint = recognizer.location(in: view)
+        let xOnlyLocation: CGPoint = CGPoint(x: currentPoint.x, y: view.center.y)
         
+        if(recognizer.state == .began){
+            attachmentBehavior = UIAttachmentBehavior(item: trayView, attachedToAnchor: xOnlyLocation)
+            animator.addBehavior(attachmentBehavior!)
+        }else if(recognizer.state == .changed){
+            attachmentBehavior?.anchorPoint = xOnlyLocation
+            
+        } else if (recognizer.state == .cancelled || recognizer.state == .ended){
+            animator.removeBehavior(attachmentBehavior!)
+            let velocity = recognizer.velocity(in: view)
+            let velocityThrowingThreshold = 500.00
+            
+            if(abs(velocity.x) > CGFloat(velocityThrowingThreshold)){
+                let isLeft: Bool = (velocity.x) < 0
+                updateGravityIsLeft(isLeft: isLeft)
+            }else{
+                let isLeft: Bool = trayView.frame.origin.x < view.center.x
+                updateGravityIsLeft(isLeft: isLeft)
+            }
+        }
     }
 
     func setupTrayView(){
